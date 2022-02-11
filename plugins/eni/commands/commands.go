@@ -63,6 +63,7 @@ func add(args *skel.CmdArgs, engine engine.Engine) error {
 		return err
 	}
 
+	log.Infof("executing ecs-eni plugin with conf: %v+", conf)
 	macAddressOfENI := conf.MACAddress
 	// Get the interface name of the device by scanning links
 	networkDeviceName, err := engine.GetInterfaceDeviceName(macAddressOfENI)

@@ -34,6 +34,7 @@ func Add(args *skel.CmdArgs) error {
 		return err
 	}
 
+	seelog.Infof("Executing ipam plugin with conf: %+v", ipamConf)
 	dbConf, err := config.LoadDBConfig()
 	if err != nil {
 		return err

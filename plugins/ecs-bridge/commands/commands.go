@@ -52,6 +52,8 @@ func add(args *skel.CmdArgs, engine engine.Engine) error {
 		return err
 	}
 
+	log.Infof("executing ecs-bridge plugin with conf: %+v", conf)
+
 	log.Infof("Creating the bridge: %s", conf.BridgeName)
 	bridge, err := engine.CreateBridge(conf.BridgeName, conf.MTU)
 	if err != nil {
@@ -71,7 +73,7 @@ func add(args *skel.CmdArgs, engine engine.Engine) error {
 		return err
 	}
 
-	log.Infof("Running IPAM plugin ADD: %s", conf.IPAM.Type)
+	log.Infof("Running IPAM plugin ADD: %+v", conf.IPAM)
 	result, err := engine.RunIPAMPluginAdd(conf.IPAM.Type, args.StdinData)
 	if err != nil {
 		return err
